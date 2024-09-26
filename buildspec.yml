@@ -7,7 +7,7 @@ phases:
     commands:
        
       # ECR Login
-      - docker login -u wittyparrot -p welcome
+      
       - ECR_MAIN_URI="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
       - aws ecr get-login-password --region ${AWS_REGION} | docker login -u AWS --password-stdin ${ECR_MAIN_URI}
 
@@ -17,7 +17,7 @@ phases:
       - docker build -t 2tierfrontend .
   post_build:
     commands:
-      - docker tag 2tierfrontend ${ECR_IMAGE_URI}
+      - docker tag 2tierfrontend:latest ${ECR_IMAGE_URI}
       - docker push ${ECR_IMAGE_URI}
 
      
