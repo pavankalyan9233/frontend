@@ -17,7 +17,7 @@ phases:
       - docker build -t 2tierfrontend .
   post_build:
     commands:
-      - docker tag 2tierfrontend:latest ${ECR_IMAGE_URI}
+      - docker tag 2tierfrontend ${ECR_IMAGE_URI}
       - docker push ${ECR_IMAGE_URI}
 
      
